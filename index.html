@@ -1,24 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Наши 6 месяцев ♡</title>
-
 <style>
 :root {
   --rose: #c97891;
   --deep: #99536f;
   --ink: #674454;
-  --line: rgba(190,125,149,.22);
 }
-
 * {
   box-sizing: border-box;
   font-family: "Times New Roman", Times, serif;
 }
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -32,57 +27,47 @@ body {
     radial-gradient(circle at 85% 80%, #ce8ba13d, transparent 30%),
     linear-gradient(135deg, #f4dce3, #ead0dc 48%, #f8e9e9);
 }
-
 /* Декоративные элементы */
-
 .sparkle {
   position: fixed;
   color: #99536f55;
   pointer-events: none;
   animation: float 7s ease-in-out infinite;
 }
-
 .sparkle:nth-child(1) {
   top: 12%;
   left: 12%;
   font-size: 25px;
 }
-
 .sparkle:nth-child(2) {
   top: 22%;
   right: 13%;
   font-size: 18px;
   animation-delay: -2s;
 }
-
 .sparkle:nth-child(3) {
   bottom: 15%;
   left: 18%;
   font-size: 20px;
   animation-delay: -4s;
 }
-
 .sparkle:nth-child(4) {
   bottom: 20%;
   right: 16%;
   font-size: 28px;
   animation-delay: -1s;
 }
-
 @keyframes float {
   0%,100% {
     transform: translateY(0) rotate(0);
     opacity: .45;
   }
-
   50% {
     transform: translateY(-15px) rotate(12deg);
     opacity: .9;
   }
 }
-
 /* Приветственное окно */
-
 .overlay {
   position: fixed;
   inset: 0;
@@ -94,12 +79,10 @@ body {
   backdrop-filter: blur(8px);
   transition: opacity .5s, visibility .5s;
 }
-
 .overlay.hidden {
   opacity: 0;
   visibility: hidden;
 }
-
 .welcome {
   width: min(460px, 100%);
   padding: 42px 30px 34px;
@@ -110,33 +93,27 @@ body {
   box-shadow: 0 24px 70px #69374d38;
   animation: appear .7s ease both;
 }
-
 @keyframes appear {
   from {
     opacity: 0;
     transform: translateY(20px) scale(.96);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
-
 .heart {
   color: var(--rose);
   font-size: 32px;
   margin-bottom: 14px;
 }
-
 .welcome p {
   margin: 0 0 28px;
   font-size: clamp(22px,5vw,29px);
   line-height: 1.45;
 }
-
 /* Кнопки */
-
 button {
   border: 0;
   border-radius: 999px;
@@ -150,14 +127,11 @@ button {
   box-shadow: 0 9px 22px #a85f7b47;
   transition: .2s;
 }
-
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px #a85f7b5c;
 }
-
 /* Блокнот */
-
 .book-wrap {
   width: min(760px,100%);
   opacity: 0;
@@ -165,13 +139,11 @@ button:hover {
   transition: opacity .8s, transform .8s;
   pointer-events: none;
 }
-
 .book-wrap.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
-
 .book {
   position: relative;
   min-height: 470px;
@@ -180,9 +152,6 @@ button:hover {
   overflow: hidden;
   border: 1px solid #e8cbd4;
   border-radius: 8px 24px 24px 8px;
-
-  /* Только вертикальная линия, без горизонтальных */
-
   background:
     linear-gradient(
       90deg,
@@ -191,14 +160,11 @@ button:hover {
       transparent 2px
     ),
     linear-gradient(105deg,#fffdfa,#fff8f5);
-
   box-shadow:
     0 28px 70px #69374d38,
     inset 8px 0 14px #91556c14;
 }
-
-/* Вертикальная линия слева */
-
+/* Вертикальная линия */
 .book::before {
   content: "";
   position: absolute;
@@ -208,9 +174,7 @@ button:hover {
   width: 1px;
   background: #cc809a52;
 }
-
-/* Сердечко сверху справа */
-
+/* Сердечко на странице */
 .book::after {
   content: "♡";
   position: absolute;
@@ -219,7 +183,6 @@ button:hover {
   color: #c9789159;
   font-size: 26px;
 }
-
 .eyebrow {
   margin: 0 0 20px;
   color: #b16e88;
@@ -228,17 +191,18 @@ button:hover {
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-
+/* Основной текст */
 .letter {
   min-height: 220px;
   white-space: pre-wrap;
-  font-size: clamp(19px,3vw,23px);
-  line-height: 1.72;
+  font-size: 12px;
+  line-height: 1.5;
+  text-indent: 0;
+  text-align: left;
   color: #674454;
+  overflow-wrap: break-word;
 }
-
 /* Номер страницы */
-
 .page-number {
   position: absolute;
   bottom: 18px;
@@ -247,9 +211,7 @@ button:hover {
   font-size: 15px;
   letter-spacing: 1px;
 }
-
-/* Мигающий курсор */
-
+/* Курсор */
 .cursor {
   display: inline-block;
   width: 2px;
@@ -259,15 +221,12 @@ button:hover {
   background: #b16e88;
   animation: blink .8s steps(2,start) infinite;
 }
-
 @keyframes blink {
   to {
     visibility: hidden;
   }
 }
-
 /* Кнопка продолжения */
-
 .continue-btn {
   display: block;
   margin: 25px auto 0;
@@ -275,14 +234,11 @@ button:hover {
   pointer-events: none;
   transition: opacity .6s;
 }
-
 .continue-btn.visible {
   opacity: 1;
   pointer-events: auto;
 }
-
 /* Вторая страница */
-
 .next-screen {
   position: fixed;
   inset: 0;
@@ -290,22 +246,18 @@ button:hover {
   display: grid;
   place-items: center;
   padding: 20px;
-
   background:
     radial-gradient(circle at 15% 20%, #ffffffcc, transparent 28%),
     radial-gradient(circle at 85% 80%, #ce8ba13d, transparent 30%),
     linear-gradient(135deg,#f4dce3,#ead0dc,#f8e9e9);
-
   opacity: 0;
   visibility: hidden;
   transition: opacity .7s, visibility .7s;
 }
-
 .next-screen.visible {
   opacity: 1;
   visibility: visible;
 }
-
 .next-content {
   width: min(460px,100%);
   padding: 45px 30px;
@@ -314,213 +266,129 @@ button:hover {
   border-radius: 25px;
   background: linear-gradient(145deg,#fffaf8,#f8e8ed);
   box-shadow: 0 24px 70px #69374d38;
-
   transform: translateY(20px) scale(.97);
   transition: transform .7s;
 }
-
 .next-screen.visible .next-content {
   transform: translateY(0) scale(1);
 }
-
 /* QR-код */
-
 .qr-image {
   display: block;
   width: 220px;
   height: 220px;
   max-width: 100%;
   object-fit: contain;
-  margin: 20px auto;
-  border-radius: 12px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  border: 1px solid #efd4dd;
+  border-radius: 15px;
+  background: white;
   box-shadow: 0 8px 25px #a85f7b30;
 }
-
+/* Время */
 .next-content .time {
   margin-top: 20px;
   color: #987184;
   font-size: 19px;
   letter-spacing: 2px;
 }
-
 /* Мобильная версия */
-
 @media(max-width:520px) {
   body {
     padding: 16px;
   }
-
   .book {
     min-height: 500px;
     padding-top: 58px;
   }
-
   .letter {
     min-height: 250px;
+    font-size: 12px;
   }
 }
 </style>
 </head>
-
 <body>
-
 <!-- Декоративные элементы -->
-
 <span class="sparkle">✧</span>
 <span class="sparkle">♡</span>
 <span class="sparkle">✦</span>
 <span class="sparkle">✧</span>
-
 <!-- Первое окно -->
-
 <div class="overlay" id="welcomeOverlay">
-
   <div class="welcome">
-
     <div class="heart">♡</div>
-
     <p>
       Вот и настали 6 месяцев наших отношений)
     </p>
-
     <button id="openGift">
       Открыть подарок
     </button>
-
   </div>
-
 </div>
-
 <!-- Блокнот -->
-
 <main class="book-wrap" id="bookWrap">
-
   <article class="book">
-
     <p class="eyebrow">
-      С полу годом нас❤️
+      С полугодием нас
     </p>
-
-    <div class="letter">
-      <span id="typedText"></span><span class="cursor" id="cursor"></span>
-    </div>
-
+    <div class="letter"><span id="typedText"></span><span class="cursor" id="cursor"></span></div>
     <button class="continue-btn" id="continueBtn">
       Продолжить →
     </button>
-
-    <!-- Номер страницы -->
-
-    <div class="page-number">
-      1
-    </div>
-
+    <div class="page-number">1</div>
   </article>
-
 </main>
-
 <!-- Вторая страница -->
-
 <div class="next-screen" id="nextScreen">
-
   <div class="next-content">
-
-    <div class="heart">♡</div>
-
     <img
       src="qr.png"
       alt="QR-код"
       class="qr-image"
     >
-
     <div class="time">
       00:20:46
     </div>
-
   </div>
-
 </div>
-
 <script>
-
-/* ==================================
-   ТВОЙ ТЕКСТ
-================================== */
-
+/* ТВОЙ ТЕКСТ */
 const message = `Солнце, прошло уже 6 месяцев. Целых под года мы уже вместе, проводим время, находясь рядом друг с другом, любим и поддерживаем, переживаем и скучаем, и всё это делаем вместе. Впереди жизнь, которую я очень хочу провести с тобой, только с тобой и ни с кем больше, ты самое важное что у меня есть, самый любимый человек, самая лучшая девочка на всей планете и во всей вселенной. Ты всегда можешь на меня положится, всегда можешь мне доверится. Мы с тобой пройдем многое, много где побываем, я верю в нас. Я люблю тебя моя любимая девочка, и люблю очень сильно❤️`;
-
-
-/* ==================================
-   ПЕРЕМЕННЫЕ
-================================== */
-
+/* ПЕРЕМЕННЫЕ */
 const overlay = document.getElementById("welcomeOverlay");
 const bookWrap = document.getElementById("bookWrap");
-
 const openGift = document.getElementById("openGift");
 const typedText = document.getElementById("typedText");
 const cursor = document.getElementById("cursor");
-
 const continueBtn = document.getElementById("continueBtn");
 const nextScreen = document.getElementById("nextScreen");
-
-
-/* ==================================
-   ОТКРЫТИЕ ПОДАРКА
-================================== */
-
+/* ОТКРЫТИЕ ПОДАРКА */
 openGift.addEventListener("click", () => {
-
   overlay.classList.add("hidden");
-
   bookWrap.classList.add("visible");
-
   setTimeout(typeLetter, 650);
-
 });
-
-
-/* ==================================
-   АНИМАЦИЯ ПЕЧАТИ ТЕКСТА
-================================== */
-
+/* АНИМАЦИЯ ПЕЧАТИ */
 let index = 0;
-
 function typeLetter() {
-
   if (index < message.length) {
-
     typedText.textContent += message[index];
-
     index++;
-
     setTimeout(
       typeLetter,
       message[index - 1] === "\n" ? 180 : 38
     );
-
   } else {
-
     cursor.style.display = "none";
-
     continueBtn.classList.add("visible");
-
   }
-
 }
-
-
-/* ==================================
-   ПЕРЕХОД НА ВТОРУЮ СТРАНИЦУ
-================================== */
-
+/* ПЕРЕХОД НА ВТОРУЮ СТРАНИЦУ */
 continueBtn.addEventListener("click", () => {
-
   nextScreen.classList.add("visible");
-
 });
-
 </script>
-
 </body>
 </html>
