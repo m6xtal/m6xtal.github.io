@@ -195,7 +195,7 @@ button:hover {
 .letter {
   min-height: 220px;
   white-space: pre-wrap;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   text-indent: 0;
   text-align: left;
@@ -293,6 +293,18 @@ button:hover {
   font-size: 19px;
   letter-spacing: 2px;
 }
+/* Кнопка назад */
+.back-btn {
+  display: block;
+  margin: 25px auto 0;
+  padding: 12px 30px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #d18ba2, #a85f7b);
+  box-shadow: 0 7px 18px #a85f7b35;
+}
+.back-btn:hover {
+  transform: translateY(-2px);
+}
 /* Мобильная версия */
 @media(max-width:520px) {
   body {
@@ -331,7 +343,7 @@ button:hover {
 <main class="book-wrap" id="bookWrap">
   <article class="book">
     <p class="eyebrow">
-      С полугодием нас
+      С полугодием нас ❤️
     </p>
     <div class="letter"><span id="typedText"></span><span class="cursor" id="cursor"></span></div>
     <button class="continue-btn" id="continueBtn">
@@ -351,6 +363,9 @@ button:hover {
     <div class="time">
       00:20:46
     </div>
+    <button class="back-btn" id="backBtn">
+      ← Назад
+    </button>
   </div>
 </div>
 <script>
@@ -364,6 +379,7 @@ const typedText = document.getElementById("typedText");
 const cursor = document.getElementById("cursor");
 const continueBtn = document.getElementById("continueBtn");
 const nextScreen = document.getElementById("nextScreen");
+const backBtn = document.getElementById("backBtn");
 /* ОТКРЫТИЕ ПОДАРКА */
 openGift.addEventListener("click", () => {
   overlay.classList.add("hidden");
@@ -385,9 +401,19 @@ function typeLetter() {
     continueBtn.classList.add("visible");
   }
 }
-/* ПЕРЕХОД НА ВТОРУЮ СТРАНИЦУ */
+/* ПЕРЕХОД НА СТРАНИЦУ С QR */
 continueBtn.addEventListener("click", () => {
   nextScreen.classList.add("visible");
+});
+/* ВОЗВРАЩЕНИЕ НАЗАД */
+backBtn.addEventListener("click", () => {
+  nextScreen.classList.remove("visible");
+  // Восстанавливаем весь текст сразу
+  typedText.textContent = message;
+  // Убираем курсор
+  cursor.style.display = "none";
+  // Показываем кнопку продолжения
+  continueBtn.classList.add("visible");
 });
 </script>
 </body>
