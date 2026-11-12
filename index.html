@@ -27,7 +27,6 @@ body {
   overflow-x: hidden;
   padding: 24px;
   color: var(--ink);
-  font-family: "Times New Roman", Times, serif;
   background:
     radial-gradient(circle at 15% 20%, #ffffffcc, transparent 28%),
     radial-gradient(circle at 85% 80%, #ce8ba13d, transparent 30%),
@@ -177,18 +176,19 @@ button:hover {
   position: relative;
   min-height: 470px;
   padding: clamp(34px,7vw,66px) clamp(25px,7vw,76px);
+  padding-bottom: 55px;
   overflow: hidden;
   border: 1px solid #e8cbd4;
   border-radius: 8px 24px 24px 8px;
 
+  /* Только вертикальная линия, без горизонтальных */
+
   background:
-    linear-gradient(90deg,#b1708921 0,#b1708921 2px,transparent 2px),
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 35px,
-      var(--line) 36px,
-      transparent 37px
+    linear-gradient(
+      90deg,
+      #b1708921 0,
+      #b1708921 2px,
+      transparent 2px
     ),
     linear-gradient(105deg,#fffdfa,#fff8f5);
 
@@ -196,6 +196,8 @@ button:hover {
     0 28px 70px #69374d38,
     inset 8px 0 14px #91556c14;
 }
+
+/* Вертикальная линия слева */
 
 .book::before {
   content: "";
@@ -206,6 +208,8 @@ button:hover {
   width: 1px;
   background: #cc809a52;
 }
+
+/* Сердечко сверху справа */
 
 .book::after {
   content: "♡";
@@ -219,7 +223,6 @@ button:hover {
 .eyebrow {
   margin: 0 0 20px;
   color: #b16e88;
-  font-family: "Times New Roman", Times, serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 3px;
@@ -229,10 +232,20 @@ button:hover {
 .letter {
   min-height: 220px;
   white-space: pre-wrap;
-  font-family: "Times New Roman", Times, serif;
   font-size: clamp(19px,3vw,23px);
   line-height: 1.72;
   color: #674454;
+}
+
+/* Номер страницы */
+
+.page-number {
+  position: absolute;
+  bottom: 18px;
+  left: 35px;
+  color: #b16e88;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 /* Мигающий курсор */
@@ -326,10 +339,11 @@ button:hover {
 .next-content .time {
   margin-top: 20px;
   color: #987184;
-  font-family: "Times New Roman", Times, serif;
   font-size: 19px;
   letter-spacing: 2px;
 }
+
+/* Мобильная версия */
 
 @media(max-width:520px) {
   body {
@@ -395,6 +409,12 @@ button:hover {
       Продолжить →
     </button>
 
+    <!-- Номер страницы -->
+
+    <div class="page-number">
+      1
+    </div>
+
   </article>
 
 </main>
@@ -408,13 +428,13 @@ button:hover {
     <div class="heart">♡</div>
 
     <img
-      src="https://i.ibb.co/LdKRdNqn/qrcod-jxb3.png"
+      src="qr.jpeg"
       alt="QR-код"
       class="qr-image"
     >
 
     <div class="time">
-      00:20:06
+      20:46
     </div>
 
   </div>
@@ -425,7 +445,6 @@ button:hover {
 
 /* ==================================
    ТВОЙ ТЕКСТ
-   ЗАМЕНИ ЕГО НА СВОЙ
 ================================== */
 
 const message = `Солнце, прошло уже 6 месяцев. Целых под года мы уже вместе, проводим время, находясь рядом друг с другом, любим и поддерживаем, переживаем и скучаем, и всё это делаем вместе. Впереди жизнь, которую я очень хочу провести с тобой, только с тобой и ни с кем больше, ты самое важное что у меня есть, самый любимый человек, самая лучшая девочка на всей планете и во всей вселенной. Ты всегда можешь на меня положится, всегда можешь мне доверится. Мы с тобой пройдем многое, много где побываем, я верю в нас. Я люблю тебя моя любимая девочка, и люблю очень сильно❤️`;
