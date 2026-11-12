@@ -310,12 +310,17 @@ button:hover {
   transform: translateY(0) scale(1);
 }
 
-.next-content a {
-  color: #a85f7b;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 25px;
-  text-decoration-color: #a85f7b73;
-  text-underline-offset: 5px;
+/* QR-код */
+
+.qr-image {
+  display: block;
+  width: 220px;
+  height: 220px;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px #a85f7b30;
 }
 
 .next-content .time {
@@ -402,16 +407,14 @@ button:hover {
 
     <div class="heart">♡</div>
 
-    <a
-      href="https://1.ru"
-      target="_blank"
-      rel="noopener noreferrer"
+    <img
+      src="qr.jpeg"
+      alt="QR-код"
+      class="qr-image"
     >
-      название
-    </a>
 
     <div class="time">
-      12:20
+      20:46
     </div>
 
   </div>
