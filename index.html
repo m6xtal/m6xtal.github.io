@@ -591,7 +591,7 @@ function typeLetter() {
     index++;
     setTimeout(
       typeLetter,
-      message[index - 1] === "\n" ? 300 : 120
+      message[index - 1] === "\n" ? 250 : 80
     );
   } else {
     cursor.style.display = "none";
