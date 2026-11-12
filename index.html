@@ -356,10 +356,10 @@ button:disabled {
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-/* Основной текст */
+/* Основной текст — без абзацного форматирования */
 .letter {
   min-height: 220px;
-  white-space: pre-wrap;
+  white-space: normal;
   font-size: 18px;
   line-height: 1.65;
   text-indent: 0;
@@ -534,7 +534,7 @@ button:disabled {
     <div class="letter">
       <span id="typedText"></span><span class="cursor" id="cursor"></span>
     </div>
-    <button class="continue-btn" id="continueBtn">
+    <button type="button" class="continue-btn" id="continueBtn">
       Продолжить →
     </button>
     <div class="page-number">1</div>
@@ -551,7 +551,7 @@ button:disabled {
     <div class="time">
       00:20:46
     </div>
-    <button class="back-btn" id="backBtn">
+    <button type="button" class="back-btn" id="backBtn">
       ← Назад
     </button>
   </div>
