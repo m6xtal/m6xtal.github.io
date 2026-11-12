@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наши 6 месяцев ♡</title>
+
+<style>
+:root {
+  --rose: #c97891;
+  --deep: #99536f;
+  --ink: #674454;
+  --line: rgba(190,125,149,.22);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+  padding: 24px;
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+  background:
+    radial-gradient(circle at 15% 20%, #ffffffcc, transparent 28%),
+    radial-gradient(circle at 85% 80%, #ce8ba13d, transparent 30%),
+    linear-gradient(135deg, #f4dce3, #ead0dc 48%, #f8e9e9);
+}
+
+/* Декоративные элементы */
+
+.sparkle {
+  position: fixed;
+  color: #99536f55;
+  pointer-events: none;
+  animation: float 7s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) {
+  top: 12%;
+  left: 12%;
+  font-size: 25px;
+}
+
+.sparkle:nth-child(2) {
+  top: 22%;
+  right: 13%;
+  font-size: 18px;
+  animation-delay: -2s;
+}
+
+.sparkle:nth-child(3) {
+  bottom: 15%;
+  left: 18%;
+  font-size: 20px;
+  animation-delay: -4s;
+}
+
+.sparkle:nth-child(4) {
+  bottom: 20%;
+  right: 16%;
+  font-size: 28px;
+  animation-delay: -1s;
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0) rotate(0);
+    opacity: .45;
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(12deg);
+    opacity: .9;
+  }
+}
+
+/* Приветственное окно */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: #5330414d;
+  backdrop-filter: blur(8px);
+  transition: opacity .5s, visibility .5s;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.welcome {
+  width: min(460px, 100%);
+  padding: 42px 30px 34px;
+  text-align: center;
+  border: 1px solid #ffffffcc;
+  border-radius: 28px;
+  background: linear-gradient(145deg,#fffaf8,#f8e8ed);
+  box-shadow: 0 24px 70px #69374d38;
+  animation: appear .7s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.heart {
+  color: var(--rose);
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.welcome p {
+  margin: 0 0 28px;
+  font-size: clamp(22px,5vw,29px);
+  line-height: 1.45;
+}
+
+/* Кнопки */
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 28px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg,#c97891,#a85f7b);
+  box-shadow: 0 9px 22px #a85f7b47;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px #a85f7b5c;
+}
+
+/* Блокнот */
+
+.book-wrap {
+  width: min(760px,100%);
+  opacity: 0;
+  transform: translateY(18px) scale(.98);
+  transition: opacity .8s, transform .8s;
+  pointer-events: none;
+}
+
+.book-wrap.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.book {
+  position: relative;
+  min-height: 470px;
+  padding: clamp(34px,7vw,66px) clamp(25px,7vw,76px);
+  overflow: hidden;
+  border: 1px solid #e8cbd4;
+  border-radius: 8px 24px 24px 8px;
+
+  background:
+    linear-gradient(90deg,#b1708921 0,#b1708921 2px,transparent 2px),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 35px,
+      var(--line) 36px,
+      transparent 37px
+    ),
+    linear-gradient(105deg,#fffdfa,#fff8f5);
+
+  box-shadow:
+    0 28px 70px #69374d38,
+    inset 8px 0 14px #91556c14;
+}
+
+.book::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 17px;
+  width: 1px;
+  background: #cc809a52;
+}
+
+.book::after {
+  content: "♡";
+  position: absolute;
+  right: 26px;
+  top: 18px;
+  color: #c9789159;
+  font-size: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: #b16e88;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.letter {
+  min-height: 220px;
+  white-space: pre-wrap;
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(19px,3vw,23px);
+  line-height: 1.72;
+  color: #674454;
+}
+
+/* Мигающий курсор */
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: #b16e88;
+  animation: blink .8s steps(2,start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Кнопка продолжения */
+
+.continue-btn {
+  display: block;
+  margin: 25px auto 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+}
+
+.continue-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Вторая страница */
+
+.next-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+
+  background:
+    radial-gradient(circle at 15% 20%, #ffffffcc, transparent 28%),
+    radial-gradient(circle at 85% 80%, #ce8ba13d, transparent 30%),
+    linear-gradient(135deg,#f4dce3,#ead0dc,#f8e9e9);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .7s, visibility .7s;
+}
+
+.next-screen.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.next-content {
+  width: min(460px,100%);
+  padding: 45px 30px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 25px;
+  background: linear-gradient(145deg,#fffaf8,#f8e8ed);
+  box-shadow: 0 24px 70px #69374d38;
+
+  transform: translateY(20px) scale(.97);
+  transition: transform .7s;
+}
+
+.next-screen.visible .next-content {
+  transform: translateY(0) scale(1);
+}
+
+.next-content a {
+  color: #a85f7b;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 25px;
+  text-decoration-color: #a85f7b73;
+  text-underline-offset: 5px;
+}
+
+.next-content .time {
+  margin-top: 20px;
+  color: #987184;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 19px;
+  letter-spacing: 2px;
+}
+
+@media(max-width:520px) {
+  body {
+    padding: 16px;
+  }
+
+  .book {
+    min-height: 500px;
+    padding-top: 58px;
+  }
+
+  .letter {
+    min-height: 250px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Декоративные элементы -->
+
+<span class="sparkle">✧</span>
+<span class="sparkle">♡</span>
+<span class="sparkle">✦</span>
+<span class="sparkle">✧</span>
+
+<!-- Первое окно -->
+
+<div class="overlay" id="welcomeOverlay">
+
+  <div class="welcome">
+
+    <div class="heart">♡</div>
+
+    <p>
+      Вот и настали 6 месяцев наших отношений)
+    </p>
+
+    <button id="openGift">
+      Открыть подарок
+    </button>
+
+  </div>
+
+</div>
+
+<!-- Блокнот -->
+
+<main class="book-wrap" id="bookWrap">
+
+  <article class="book">
+
+    <p class="eyebrow">
+      для самого дорогого человека
+    </p>
+
+    <div class="letter">
+      <span id="typedText"></span><span class="cursor" id="cursor"></span>
+    </div>
+
+    <button class="continue-btn" id="continueBtn">
+      Продолжить →
+    </button>
+
+  </article>
+
+</main>
+
+<!-- Вторая страница -->
+
+<div class="next-screen" id="nextScreen">
+
+  <div class="next-content">
+
+    <div class="heart">♡</div>
+
+    <a
+      href="https://1.ru"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      название
+    </a>
+
+    <div class="time">
+      12:20
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+/* ==================================
+   ТВОЙ ТЕКСТ
+   ЗАМЕНИ ЕГО НА СВОЙ
+================================== */
+
+const message = `Любимый человек,
+
+Сегодня наши маленькие шесть месяцев.
+Спасибо за каждую улыбку, каждый момент
+и за то, что ты рядом.
+
+Я очень ценю нас и всё, что у нас есть.
+Пусть впереди будет ещё много счастливых
+дней, тёплых воспоминаний и поводов
+улыбаться друг другу. ♡`;
+
+
+/* ==================================
+   ПЕРЕМЕННЫЕ
+================================== */
+
+const overlay = document.getElementById("welcomeOverlay");
+const bookWrap = document.getElementById("bookWrap");
+
+const openGift = document.getElementById("openGift");
+const typedText = document.getElementById("typedText");
+const cursor = document.getElementById("cursor");
+
+const continueBtn = document.getElementById("continueBtn");
+const nextScreen = document.getElementById("nextScreen");
+
+
+/* ==================================
+   ОТКРЫТИЕ ПОДАРКА
+================================== */
+
+openGift.addEventListener("click", () => {
+
+  overlay.classList.add("hidden");
+
+  bookWrap.classList.add("visible");
+
+  setTimeout(typeLetter, 650);
+
+});
+
+
+/* ==================================
+   АНИМАЦИЯ ПЕЧАТИ ТЕКСТА
+================================== */
+
+let index = 0;
+
+function typeLetter() {
+
+  if (index < message.length) {
+
+    typedText.textContent += message[index];
+
+    index++;
+
+    setTimeout(
+      typeLetter,
+      message[index - 1] === "\n" ? 180 : 38
+    );
+
+  } else {
+
+    cursor.style.display = "none";
+
+    continueBtn.classList.add("visible");
+
+  }
+
+}
+
+
+/* ==================================
+   ПЕРЕХОД НА ВТОРУЮ СТРАНИЦУ
+================================== */
+
+continueBtn.addEventListener("click", () => {
+
+  nextScreen.classList.add("visible");
+
+});
+
+</script>
+
+</body>
+</html>
