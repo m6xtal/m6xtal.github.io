@@ -82,10 +82,11 @@ body {
 .overlay.hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 .welcome {
   width: min(460px, 100%);
-  padding: 42px 30px 34px;
+  padding: 38px 30px 34px;
   text-align: center;
   border: 1px solid #ffffffcc;
   border-radius: 28px;
@@ -109,9 +110,188 @@ body {
   margin-bottom: 14px;
 }
 .welcome p {
-  margin: 0 0 28px;
+  margin: 0 0 22px;
   font-size: clamp(22px,5vw,29px);
   line-height: 1.45;
+}
+/* Подарок */
+.gift-stage {
+  position: relative;
+  width: 170px;
+  height: 125px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+}
+.gift-emoji {
+  position: relative;
+  z-index: 2;
+  font-size: 85px;
+  line-height: 1;
+  display: block;
+  filter: drop-shadow(0 9px 8px #a85f7b35);
+  transform-origin: center bottom;
+}
+/* Тряска подарка */
+.gift-stage.opening .gift-emoji {
+  animation: giftShake .65s ease-in-out,
+             giftOpen 1.2s ease-in-out .65s forwards;
+}
+@keyframes giftShake {
+  0%,100% {
+    transform: rotate(0) translateX(0);
+  }
+  15% {
+    transform: rotate(-13deg) translateX(-5px);
+  }
+  30% {
+    transform: rotate(13deg) translateX(5px);
+  }
+  45% {
+    transform: rotate(-12deg) translateX(-4px);
+  }
+  60% {
+    transform: rotate(12deg) translateX(4px);
+  }
+  75% {
+    transform: rotate(-7deg);
+  }
+  90% {
+    transform: rotate(6deg);
+  }
+}
+@keyframes giftOpen {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  35% {
+    transform: scale(1.35) rotate(-10deg);
+  }
+  65% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  100% {
+    transform: scale(1.35) rotate(0);
+    opacity: .35;
+  }
+}
+/* Разлетающиеся ленточки */
+.ribbon {
+  position: absolute;
+  z-index: 3;
+  width: 9px;
+  height: 38px;
+  border-radius: 5px;
+  background: linear-gradient(180deg,#f3b6c8,#c97891);
+  opacity: 0;
+  pointer-events: none;
+}
+.ribbon:nth-child(2) {
+  left: 25px;
+  top: 45px;
+}
+.ribbon:nth-child(3) {
+  right: 25px;
+  top: 45px;
+}
+.ribbon:nth-child(4) {
+  left: 65px;
+  top: 5px;
+}
+.ribbon:nth-child(5) {
+  right: 65px;
+  top: 5px;
+}
+.ribbon:nth-child(6) {
+  left: 80px;
+  bottom: 0;
+}
+.gift-stage.opening .ribbon:nth-child(2) {
+  animation: ribbonLeft 1.2s ease-out .7s forwards;
+}
+.gift-stage.opening .ribbon:nth-child(3) {
+  animation: ribbonRight 1.2s ease-out .7s forwards;
+}
+.gift-stage.opening .ribbon:nth-child(4) {
+  animation: ribbonTopLeft 1.2s ease-out .7s forwards;
+}
+.gift-stage.opening .ribbon:nth-child(5) {
+  animation: ribbonTopRight 1.2s ease-out .7s forwards;
+}
+.gift-stage.opening .ribbon:nth-child(6) {
+  animation: ribbonBottom 1.2s ease-out .7s forwards;
+}
+@keyframes ribbonLeft {
+  to {
+    opacity: 1;
+    transform: translate(-65px,-55px) rotate(-65deg) scale(.7);
+  }
+}
+@keyframes ribbonRight {
+  to {
+    opacity: 1;
+    transform: translate(65px,-55px) rotate(65deg) scale(.7);
+  }
+}
+@keyframes ribbonTopLeft {
+  to {
+    opacity: 1;
+    transform: translate(-45px,-65px) rotate(-45deg) scale(.7);
+  }
+}
+@keyframes ribbonTopRight {
+  to {
+    opacity: 1;
+    transform: translate(45px,-65px) rotate(45deg) scale(.7);
+  }
+}
+@keyframes ribbonBottom {
+  to {
+    opacity: 1;
+    transform: translateY(75px) rotate(90deg) scale(.7);
+  }
+}
+/* Блёстки при открытии */
+.gift-sparkle {
+  position: absolute;
+  z-index: 4;
+  font-size: 24px;
+  color: #c97891;
+  opacity: 0;
+  pointer-events: none;
+}
+.gift-sparkle:nth-of-type(7) {
+  top: 0;
+  left: 0;
+}
+.gift-sparkle:nth-of-type(8) {
+  top: 5px;
+  right: 0;
+}
+.gift-sparkle:nth-of-type(9) {
+  bottom: 0;
+  left: 10px;
+}
+.gift-sparkle:nth-of-type(10) {
+  bottom: 0;
+  right: 10px;
+}
+.gift-stage.opening .gift-sparkle {
+  animation: sparkleBurst 1.4s ease-out .8s forwards;
+}
+@keyframes sparkleBurst {
+  0% {
+    opacity: 0;
+    transform: scale(.2) rotate(0);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.5) rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(.5) rotate(180deg) translateY(-20px);
+  }
 }
 /* Кнопки */
 button {
@@ -130,6 +310,10 @@ button {
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px #a85f7b5c;
+}
+button:disabled {
+  cursor: default;
+  opacity: .7;
 }
 /* Блокнот */
 .book-wrap {
@@ -319,6 +503,11 @@ button:hover {
     font-size: 12px;
   }
 }
+@media(prefers-reduced-motion: reduce) {
+  .sparkle {
+    animation: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -334,6 +523,19 @@ button:hover {
     <p>
       Вот и настали 6 месяцев наших отношений)
     </p>
+    <!-- Анимированный подарок -->
+    <div class="gift-stage" id="giftStage">
+      <span class="gift-emoji">🎁</span>
+      <span class="ribbon"></span>
+      <span class="ribbon"></span>
+      <span class="ribbon"></span>
+      <span class="ribbon"></span>
+      <span class="ribbon"></span>
+      <span class="gift-sparkle">✦</span>
+      <span class="gift-sparkle">✧</span>
+      <span class="gift-sparkle">♡</span>
+      <span class="gift-sparkle">✧</span>
+    </div>
     <button id="openGift">
       Открыть подарок
     </button>
@@ -375,16 +577,29 @@ const message = `Солнце, прошло уже 6 месяцев. Целых 
 const overlay = document.getElementById("welcomeOverlay");
 const bookWrap = document.getElementById("bookWrap");
 const openGift = document.getElementById("openGift");
+const giftStage = document.getElementById("giftStage");
 const typedText = document.getElementById("typedText");
 const cursor = document.getElementById("cursor");
 const continueBtn = document.getElementById("continueBtn");
 const nextScreen = document.getElementById("nextScreen");
 const backBtn = document.getElementById("backBtn");
 /* ОТКРЫТИЕ ПОДАРКА */
+let giftOpened = false;
 openGift.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-  bookWrap.classList.add("visible");
-  setTimeout(typeLetter, 650);
+  if (giftOpened) return;
+  giftOpened = true;
+  // Блокируем повторное нажатие
+  openGift.disabled = true;
+  openGift.textContent = "Открываем...";
+  // Запускаем анимацию подарка
+  giftStage.classList.add("opening");
+  // Через 2,5 секунды открываем блокнот
+  setTimeout(() => {
+    overlay.classList.add("hidden");
+    bookWrap.classList.add("visible");
+    // Начинаем печатать текст
+    setTimeout(typeLetter, 650);
+  }, 2500);
 });
 /* АНИМАЦИЯ ПЕЧАТИ */
 let index = 0;
@@ -407,8 +622,9 @@ continueBtn.addEventListener("click", () => {
 });
 /* ВОЗВРАЩЕНИЕ НАЗАД */
 backBtn.addEventListener("click", () => {
+  // Закрываем QR-страницу
   nextScreen.classList.remove("visible");
-  // Восстанавливаем весь текст сразу
+  // Восстанавливаем полностью написанный текст
   typedText.textContent = message;
   // Убираем курсор
   cursor.style.display = "none";
